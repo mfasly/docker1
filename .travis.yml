@@ -3,7 +3,7 @@ services:
   - docker 
 
 before_install:
-  - docker build -t mffasly/travis -f Dockerfile.dev .
+  - docker build -t mffasly/travis .
 
 script:
   #- docker run mffasly/travis npm run test -- --coverage
