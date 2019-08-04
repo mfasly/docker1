@@ -8,3 +8,16 @@ before_install:
 script:
   #- docker run mffasly/travis npm run test -- --coverage
   - docker run -e CI=true mffasly/travis npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-travis"
+  env: "DockerTravis-env"
+  bucket_name: "elasticbeanstalk-us-east-1-254003162051"
+  bucket_path: "docker-travis"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
